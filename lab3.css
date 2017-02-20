@@ -1,4 +1,29 @@
 html{
     width: 80%;
-    
+    margin: 0 auto;
+}
+
+td{
+    font-family: sans-serif;   
+    color: black;
+}
+
+.end{
+    padding-left: 50pt;
+    color: black;
+}
+
+body{
+    text-align: center !important;
+    margin: 0 auto !important;
+    background: #1c6a90;
+    color: white;
+}
+
+table{
+    margin: 0 auto;
+}
+
+h2{
+    font-family: sans-serif;
 }

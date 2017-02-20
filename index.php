@@ -186,34 +186,7 @@ function findWinner($pointsArray){
         
         <title>SilverJack</title>
         <link rel="stylesheet" href="lab3.css"></link>
-        <style>
-            html{
-                width: 80%;
-                margin: 0 auto;
-            }
-
-            td{
-                font-family: sans-serif;    
-            }
-
-            .end{
-                padding-left: 50pt;
-            }
-
-            body{
-                text-align: center;
-                margin: 0 auto;
-            }
-
-            h2{
-                font-family: sans-serif;
-           }
-           
-           table{
-               margin: 0 auto;
-           }
-
-        </style>
+        
         
     </head>
     
