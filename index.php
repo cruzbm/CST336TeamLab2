@@ -163,6 +163,19 @@ function pickPlayer($player){
 }
 
 
+function findWinner($pointsArray){
+    $b = 0;
+    $winner = "";
+    
+    foreach($pointsArray as $x => $x_value){
+        if ($x_value <= 42 && $x_value > $b){
+            $b = $x_value;
+            $winner = $x;
+        }
+    }
+    return $winner;
+}
+
 ?>
 
 
@@ -174,12 +187,32 @@ function pickPlayer($player){
         <title>SilverJack</title>
         <link rel="stylesheet" href="lab3.css"></link>
         <style>
+            html{
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            td{
+                font-family: sans-serif;    
+            }
+
+            .end{
+                padding-left: 50pt;
+            }
+
             body{
+                text-align: center;
                 margin: 0 auto;
             }
-            table{
-                margin: 0 auto;
-            }
+
+            h2{
+                font-family: sans-serif;
+           }
+           
+           table{
+               margin: 0 auto;
+           }
+
         </style>
         
     </head>
@@ -191,6 +224,7 @@ function pickPlayer($player){
         <table>
             <?php
                 $playerPoints = array();
+                $step = 0;
                 
                 echo "<table>";
                 
@@ -198,9 +232,11 @@ function pickPlayer($player){
                 echo "<td>CPU 1</td>";
                 echo "<td><img src='players/";
                 $p1 = rand(1,4);
-                $playerPoints['CPU 1'] = pickPlayer($p1);
+                pickPlayer($p1);
                 echo "' width='80' />";
-                drawCard();
+                $playerPoints[$step] = drawCard();
+                echo "</tr>";
+                $step++;
                 
                 //$first++;
                 
@@ -208,10 +244,12 @@ function pickPlayer($player){
                 echo "<td>CPU 2</td>";
                 echo "<td><img src='players/";
                 $p2 = rand(1,4);
-                $playerPoints['CPU 2'] = pickPlayer($p2);
+                pickPlayer($p2);
                 echo "' width='80' />";
-                drawCard();
+                $playerPoints[$step] = drawCard();
                 echo "</tr>";
+                $step++;
+                
                 
                 //$first++;
                 
@@ -219,10 +257,11 @@ function pickPlayer($player){
                 echo "<td>CPU 3</td>";
                 echo "<td><img src='players/";
                 $p3 = rand(1,4);
-                $playerPoints['CPU 3'] = pickPlayer($p3);
+                pickPlayer($p3);
                 echo "' width='80' />";
-                drawCard();
+                $playerPoints[$step] = drawCard();
                 echo "</tr>";
+                $step++;
                 
                 //$first++;
                 
@@ -230,16 +269,57 @@ function pickPlayer($player){
                 echo "<td>CPU 4</td>";
                 echo "<td><img src='players/";
                 $p4 = rand(1,4);
-                $playerPoints['CPU 4'] = pickPlayer($p4);
+                pickPlayer($p4);
                 echo "' width='80' />";
-                drawCard();
+                $playerPoints[$step] = drawCard();
                 echo "</tr>";
+                $step++;
                 
                 echo "</table>";
                 
                 echo "<br />";
                 echo "<h2>The winner is ";
-                echo findWinner($playerPoints[]);  
+                
+                $index = 0;
+                $ind = 0;
+                $score = 0;
+                while ($ind < 4){
+                    if ($playerPoints[$ind] > $score && $playerPoints[$ind] <= 42){
+                        $score = $playerPoints[$ind];
+                        $index = $ind;
+                        $ind++;
+                    }
+                    else{
+                        $ind++;
+                    }
+                }
+                
+                if ($score > 42){
+                    echo "no one...";
+                }
+                else{
+                    switch ($index){
+                        case 0:
+                            echo "CPU 1";
+                            break;
+                        case 1:
+                            echo "CPU 2";
+                            break;
+                        case 2:
+                            echo "CPU 3";
+                            break;
+                        case 3:
+                            echo "CPU 4";
+                            break;
+                    }
+                }
+                
+                
+                // USED TO CHECK VALUES OF ASSOCIATIVE ARRAY - NOT WORKING PROPERLY
+                // foreach($playerPoints as $x => $xVal){
+                //     echo $x . "->" . $xVal;
+                // }
+                // findWinner($playerPoints);  
             ?>
         </table>
         
