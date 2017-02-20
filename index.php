@@ -80,21 +80,49 @@ function checkPlayers($name){
 function pickPlayer($player){
     switch ($player){
         case 1:
-            echo "cf.png";
-            $players[$indexP] = "cf.png";
-            break;
+            if (!checkPlayers("cf.png")){
+                echo "cf.png";
+                $players[$indexP] = "cf.png";
+                break;
+            }
+            else{
+                $player = rand(1,4);
+                pickPlayer($player);
+                break;
+            }
         case 2:
-            echo "mario.png";
-            $players[$indexP] = "mario.png";
-            break;
+            if (!checkPlayers("mario.png")){
+                echo "mario.png";
+                $players[$indexP] = "mario.png";
+                break;
+            }
+            else{
+                $player = rand(1,4);
+                pickPlayer($player);
+                break;
+            }
         case 3:
-            echo "nes.png";
-            $players[$indexP] = "nes.png";
-            break;
+            if (!checkPlayers("nes.png")){
+                echo "nes.png";
+                $players[$indexP] = "nes.png";
+                break;
+            }
+            else{
+                $player = rand(1,4);
+                pickPlayer($player);
+                break;
+            }
         case 4:
-            echo "pikachu.png";
-            $players[$indexP] = "pikachu.png";
-            break;
+            if (!checkPlayers("pikachu.png")){
+                echo "pikachu.png";
+                $players[$indexP] = "pikachu.png";
+                break;
+            }
+            else{
+                $player = rand(1,4);
+                pickPlayer($player);
+                break;
+            }
     }
 }
 
@@ -122,7 +150,8 @@ function pickPlayer($player){
                 echo "<tr>";
                 echo "<td><img src='players/";
                 $p1 = rand(1,4);
-                echo ".png'></img>";
+                pickPlayer($p1);
+                echo "'></img>";
                 drawCard();
                 
                 echo "<tr>";
